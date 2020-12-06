@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: abc123
+      POSTGRES_USER: pay-back-time
+      POSTGRES_DB: pay-back-time
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql

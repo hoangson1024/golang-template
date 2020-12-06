@@ -1,0 +1,33 @@
+package infra
+
+import (
+	config "github.com/asim/go-micro/v3/config"
+	"github.com/asim/go-micro/v3/config/source/env"
+)
+
+type PostgresConfig struct {
+	Address      string `json:"addr"`
+	SlaveAddress string `json:"slaveaddr"`
+	Database     string `json:"db"`
+	Username     string `json:"user"`
+	Password     string `json:"password"`
+}
+
+type AppConfig struct {
+	Port     int            `json:"port"`
+	Postgres PostgresConfig `json:"postgres"`
+}
+
+func ProvideConfig() (*AppConfig, error) {
+	cfg := &AppConfig{}
+	conf, err := config.NewConfig(config.WithSource(env.NewSource()))
+	if err != nil {
+		return nil, err
+	}
+
+	if err = conf.Scan(cfg); err != nil {
+		return nil, err
+	}
+
+	return cfg, nil
+}
