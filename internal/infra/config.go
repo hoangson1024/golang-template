@@ -1,8 +1,8 @@
 package infra
 
 import (
-	config "github.com/asim/go-micro/v3/config"
-	"github.com/asim/go-micro/v3/config/source/env"
+	config "github.com/micro/go-micro/v2/config"
+	"github.com/micro/go-micro/v2/config/source/env"
 )
 
 type PostgresConfig struct {
