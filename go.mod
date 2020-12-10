@@ -27,3 +27,5 @@ require (
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 	mellium.im/sasl v0.2.1 // indirect
 )
+
+replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.8
